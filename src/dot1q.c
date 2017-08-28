@@ -506,6 +506,9 @@ dot1q_learn_mac(struct attacks *attacks, struct pcap_pkthdr *header, u_int8_t *a
 
    memcpy((void *)&arp_dst, param[DOT1Q_ARP_IP].value, 4);
 
+   arp_src = htonl( arp_src );
+   arp_dst = htonl( arp_dst );
+
    memcpy((void *)mac_dest, (void *)"\xff\xff\xff\xff\xff\xff", ETHER_ADDR_LEN);
    memcpy((void *)arp_mac_dest, (void *)"\x00\x00\x00\x00\x00\x00", ETHER_ADDR_LEN);
 
